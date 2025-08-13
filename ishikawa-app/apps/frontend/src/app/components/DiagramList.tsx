@@ -25,8 +25,19 @@ const DiagramList: React.FC = () => {
     axios
       .get<{ data: Diagram[], total: number, page: number, limit: number, totalPages: number }>('http://localhost:3001/api/diagrams', { headers })
       .then(res => {
-        // Handle paginated response - diagrams are in res.data.data
-        const diagrams = res.data.data || [];
+        // Handle both paginated response and direct array response
+        let diagrams: Diagram[] = [];
+
+        if (res.data && Array.isArray(res.data.data)) {
+          // Paginated response
+          diagrams = res.data.data;
+        } else if (Array.isArray(res.data)) {
+
+          diagrams = res.data;
+        } else {
+          console.warn('Unexpected API response format:', res.data);
+        }
+
         console.log('Raw API response:', res.data);
         console.log('Processed diagrams:', diagrams);
         console.log('Diagrams length:', diagrams.length);

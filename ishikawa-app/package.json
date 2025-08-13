@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "nx serve",
-    "build": "nx build",
-    "frontend": "nx serve frontend",
+    "build": "nx build && npm run copy-db",
+    "copy-db": "node copy-db.js",
+    "frontend": "cd apps/frontend && nx serve frontend",
     "backend": "nx serve backend",
-    "backend:dev": "cd apps/backend && npx ts-node src/main.ts",
+    "backend:dev": "nx serve backend",
     "dev": "concurrently \"npm run backend:dev\" \"npm run frontend\"",
     "dev:backend": "nx serve backend",
     "dev:frontend": "nx serve frontend"
@@ -50,6 +51,7 @@
     "@types/uuid": "^9.0.8",
     "autoprefixer": "^10.4.21",
     "babel-jest": "^30.0.2",
+    "concurrently": "^9.2.0",
     "eslint": "^9.8.0",
     "eslint-config-prettier": "^10.0.0",
     "eslint-plugin-import": "2.31.0",

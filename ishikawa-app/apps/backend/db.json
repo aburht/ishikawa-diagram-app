@@ -112,7 +112,33 @@
                 },
                 {
                   "label": "External dependencies",
-                  "info": "Third-party delays"
+                  "info": "Third-party delays",
+                  "children": [
+                    {
+                      "label": "API delays",
+                      "info": "External service issues",
+                      "children": [
+                        {
+                          "label": "Server downtime",
+                          "info": "Third-party server issues"
+                        },
+                        {
+                          "label": "Rate limiting",
+                          "info": "API throttling issues"
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Vendor delays",
+                      "info": "Supplier issues",
+                      "children": [
+                        {
+                          "label": "Late delivery",
+                          "info": "Supplier missed deadlines"
+                        }
+                      ]
+                    }
+                  ]
                 }
               ]
             },
@@ -127,6 +153,44 @@
                 {
                   "label": "Missing contingencies",
                   "info": "No backup plans for risks"
+                }
+              ]
+            },
+            {
+              "label": "CD Installation Issues",
+              "info": "Problems with CD handling process",
+              "children": [
+                {
+                  "label": "Inserted CD Wrong",
+                  "info": "Incorrect CD insertion",
+                  "children": [
+                    {
+                      "label": "Upside",
+                      "info": "CD inserted upside down"
+                    },
+                    {
+                      "label": "Back",
+                      "info": "CD inserted backwards"
+                    },
+                    {
+                      "label": "Sideways",
+                      "info": "CD inserted at wrong angle"
+                    }
+                  ]
+                },
+                {
+                  "label": "Wrong CD Type",
+                  "info": "Incompatible CD format",
+                  "children": [
+                    {
+                      "label": "DVD instead",
+                      "info": "Using DVD in CD drive"
+                    },
+                    {
+                      "label": "Blu-ray error",
+                      "info": "Wrong media type"
+                    }
+                  ]
                 }
               ]
             }
@@ -408,6 +472,40 @@
               "label": "New Cause",
               "info": "Cause description",
               "children": []
+            }
+          ]
+        },
+        {
+          "label": "sep",
+          "info": "Separation related issues",
+          "children": [
+            {
+              "label": "Poor Isolation",
+              "info": "Inadequate separation of components",
+              "children": [
+                {
+                  "label": "Insufficient barriers",
+                  "info": "Not enough physical separation"
+                },
+                {
+                  "label": "Cross-contamination",
+                  "info": "Elements mixing inappropriately"
+                }
+              ]
+            },
+            {
+              "label": "Workflow Separation",
+              "info": "Process isolation problems",
+              "children": [
+                {
+                  "label": "Parallel conflicts",
+                  "info": "Concurrent processes interfering"
+                },
+                {
+                  "label": "Resource sharing issues",
+                  "info": "Shared resources causing bottlenecks"
+                }
+              ]
             }
           ]
         }

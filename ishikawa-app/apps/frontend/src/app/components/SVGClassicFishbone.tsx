@@ -1,4 +1,3 @@
-// filepath: c:\Users\work\project\kla\ishikawa-app\apps\frontend\src\app\components\SVGClassicFishbone.tsx
 import React, { JSX } from "react";
 
 interface Bone {
@@ -47,13 +46,13 @@ function renderBone(
 
   let fontSize, fontWeight;
   if (depth === 0) {
-    fontSize = 16; // Consistent size for main categories like assignment
+    fontSize = 16;
     fontWeight = '700';
   } else if (depth === 1) {
-    fontSize = 14; // Smaller for sub-causes like assignment
+    fontSize = 14;
     fontWeight = '600';
   } else {
-    fontSize = 12; // Even smaller for deep nesting
+    fontSize = 12;
     fontWeight = '500';
   }
 
@@ -209,7 +208,7 @@ function renderBone(
     </text>
   );
 
-  if (bone.children && bone.children.length > 0 && depth <= 1) {
+  if (bone.children && bone.children.length > 0 && depth <= 3) {
     const numChildren = bone.children.length;
     const isExpanded = expandedBones?.has(path) || false;
 
@@ -218,7 +217,13 @@ function renderBone(
     const hiddenCount = numChildren - maxVisibleChildren;
 
     visibleChildren.forEach((child, idx) => {
-      const positionRatio = 0.2 + (idx * 0.6) / Math.max(1, visibleChildren.length - 1);
+      const availableLength = len * 0.8;
+      const startPosition = 0.15;
+      const spacing = availableLength / Math.max(1, visibleChildren.length);
+
+      const distanceFromStart = startPosition * len + (idx * spacing);
+      const positionRatio = distanceFromStart / len;
+
       const mainX = x + (x2 - x) * positionRatio;
       const mainY = y + (y2 - y) * positionRatio;
 
@@ -226,7 +231,10 @@ function renderBone(
       const alternateUp = idx % 2 === 0;
       const subBoneIsUp = isMainUp ? alternateUp : !alternateUp;
 
-      const horizontalLength = 70;
+      // HORIZONTAL SUB-BONES
+      const baseLength = 160;
+      const textLength = child.label.length * 4;
+      const horizontalLength = Math.max(baseLength, baseLength + textLength);
       const subBoneEndX = mainX + (subBoneIsUp ? horizontalLength : -horizontalLength);
       const subBoneEndY = mainY;
 
@@ -247,9 +255,9 @@ function renderBone(
       children.push(
         <text
           key={`subcause-text-${path}-${idx}`}
-          x={subBoneEndX + (subBoneIsUp ? 10 : -10)}
+          x={subBoneEndX + (subBoneIsUp ? 25 : -25)}
           y={subBoneEndY}
-          fontSize={14}
+          fontSize={13}
           fontWeight="600"
           fill={textColor}
           textAnchor={subBoneIsUp ? "start" : "end"}
@@ -265,6 +273,7 @@ function renderBone(
         </text>
       );
 
+      // Handle nested children with VERTICAL STACKING upside
       if (child.children && child.children.length > 0) {
         const subChildPath = `${path}-${idx}`;
         const isSubExpanded = expandedBones?.has(subChildPath) || false;
@@ -274,8 +283,13 @@ function renderBone(
         const hiddenSubCount = child.children.length - maxVisibleSubChildren;
 
         visibleSubChildren.forEach((subChild, subIdx) => {
-          const subOffsetY = (subIdx - (visibleSubChildren.length - 1) / 2) * 25;
-          const subOffsetX = subBoneIsUp ? 20 : -20;
+          // VERTICAL STACKING for sub-sub-children
+          const verticalSpacePerChild = Math.max(40, 50 - (visibleSubChildren.length * 3));
+          const totalVerticalSpan = (visibleSubChildren.length - 1) * verticalSpacePerChild;
+          const startOffset = -totalVerticalSpan / 2;
+
+          const subOffsetY = startOffset + (subIdx * verticalSpacePerChild);
+          const subOffsetX = subBoneIsUp ? 50 : -50;
 
           const subTextX = subBoneEndX + subOffsetX;
           const subTextY = subBoneEndY + subOffsetY;
@@ -285,7 +299,7 @@ function renderBone(
               key={`sub-subcause-line-${path}-${idx}-${subIdx}`}
               x1={subBoneEndX}
               y1={subBoneEndY}
-              x2={subTextX - (subBoneIsUp ? 3 : -3)}
+              x2={subTextX - (subBoneIsUp ? 8 : -8)}
               y2={subTextY}
               stroke={strokeColor}
               strokeWidth={2}
@@ -314,18 +328,61 @@ function renderBone(
               {subChild.label}
             </text>
           );
+
+          // Handle even deeper nesting if it exists
+          if (subChild.children && subChild.children.length > 0) {
+            subChild.children.forEach((deepChild, deepIdx) => {
+              const deepOffsetY = subTextY + ((deepIdx + 1) * 20);
+              const deepOffsetX = subTextX + (subBoneIsUp ? 25 : -25);
+
+              children.push(
+                <line
+                  key={`deep-line-${path}-${idx}-${subIdx}-${deepIdx}`}
+                  x1={subTextX}
+                  y1={subTextY}
+                  x2={deepOffsetX - (subBoneIsUp ? 5 : -5)}
+                  y2={deepOffsetY}
+                  stroke={strokeColor}
+                  strokeWidth={1}
+                  opacity={0.6}
+                />
+              );
+
+              children.push(
+                <text
+                  key={`deep-text-${path}-${idx}-${subIdx}-${deepIdx}`}
+                  x={deepOffsetX}
+                  y={deepOffsetY}
+                  fontSize={9}
+                  fontWeight="400"
+                  fill={textColor}
+                  textAnchor={subBoneIsUp ? "start" : "end"}
+                  dominantBaseline="middle"
+                  style={{
+                    cursor: onBoneClick ? 'pointer' : 'default',
+                    userSelect: 'none',
+                    fontFamily: 'Arial, sans-serif',
+                    opacity: 0.8
+                  }}
+                  onClick={() => onBoneClick?.(deepChild, `${path}-${idx}-${subIdx}-${deepIdx}`)}
+                >
+                  {deepChild.label}
+                </text>
+              );
+            });
+          }
         });
 
         if (hiddenSubCount > 0) {
-          const moreX = subBoneEndX + (subBoneIsUp ? 20 : -20);
-          const moreY = subBoneEndY + (visibleSubChildren.length * 12) + 15;
+          const moreX = subBoneEndX + (subBoneIsUp ? 70 : -70);
+          const moreY = subBoneEndY + (visibleSubChildren.length * 25) + 30;
 
           children.push(
             <circle
               key={`more-sub-indicator-${path}-${idx}`}
               cx={moreX}
               cy={moreY}
-              r={10}
+              r={12}
               fill={isSubExpanded ? "#ef4444" : "#10b981"}
               stroke="white"
               strokeWidth={2}
@@ -336,7 +393,7 @@ function renderBone(
               key={`more-sub-text-${path}-${idx}`}
               x={moreX}
               y={moreY + 1}
-              fontSize={9}
+              fontSize={10}
               fontWeight="bold"
               fill="white"
               textAnchor="middle"
@@ -352,15 +409,16 @@ function renderBone(
     });
 
     if (hiddenCount > 0) {
-      const indicatorX = x2 + Math.cos(angle) * 30;
-      const indicatorY = y2 + Math.sin(angle) * 30;
+      const indicatorOffset = Math.max(80, 70 + (numChildren * 10));
+      const indicatorX = x2 + Math.cos(angle) * indicatorOffset;
+      const indicatorY = y2 + Math.sin(angle) * indicatorOffset;
 
       children.push(
         <circle
           key={`more-indicator-bg-${path}`}
           cx={indicatorX}
           cy={indicatorY}
-          r={12}
+          r={14}
           fill="white"
           stroke="#e5e7eb"
           strokeWidth={2}
@@ -371,7 +429,7 @@ function renderBone(
           key={`more-indicator-${path}`}
           cx={indicatorX}
           cy={indicatorY}
-          r={10}
+          r={12}
           fill={isExpanded ? "#ef4444" : "#3b82f6"}
           stroke="white"
           strokeWidth={2}
@@ -394,10 +452,14 @@ function renderBone(
         </text>
       );
     }
-  }  return children;
-}export default function SVGClassicFishbone({
-  width = 1000,
-  height = 600,
+  }
+
+  return children;
+}
+
+export default function SVGClassicFishbone({
+  width = 1800,
+  height = 1200,
   effectLabel = "Effect",
   bones,
   theme = 'light',
@@ -491,9 +553,9 @@ function renderBone(
 
       {bones.map((bone, i) => {
         const isUp = i % 2 === 0;
-        const angle = isUp ? -Math.PI / 4 : Math.PI / 4;
+        const angle = isUp ? -Math.PI / 3 : Math.PI / 3; // 60° instead of 45°
 
-        const L = Math.min(200, Math.max(160, width * 0.18));
+       const L = Math.min(280, Math.max(220, width * 0.22));
 
         const spineLength = x1 - x0;
         const totalBones = bones.length;

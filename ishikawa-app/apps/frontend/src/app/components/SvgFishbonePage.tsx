@@ -27,6 +27,26 @@ export default function SvgFishbonePage() {
   const [diagram, setDiagram] = useState<Diagram | null>(null);
   const [loading, setLoading] = useState(true);
 
+  // Expansion state management for +number indicators (view-only)
+  const [expandedBones, setExpandedBones] = useState<Set<string>>(new Set());
+
+  // Handle expand/collapse functionality for read-only view
+  const handleBoneClick = (bone: Bone, path: string, isExpandClick: boolean = false) => {
+    // Only handle expansion clicks in read-only view
+    if (isExpandClick) {
+      setExpandedBones(prev => {
+        const newSet = new Set(prev);
+        if (newSet.has(path)) {
+          newSet.delete(path); // Collapse if already expanded
+        } else {
+          newSet.add(path); // Expand if collapsed
+        }
+        return newSet;
+      });
+    }
+
+  };
+
   useEffect(() => {
     // Hardcoded diagram data
     // const hardcodedDiagram: Diagram = {
@@ -168,9 +188,11 @@ export default function SvgFishbonePage() {
             <SVGClassicFishbone
               effectLabel={diagram.effectLabel}
               bones={diagram.roots}
-              width={1200}
-              height={600}
+              width={1800}
+              height={1200}
               theme="light"
+              onBoneClick={handleBoneClick}
+              expandedBones={expandedBones}
             />
           </div>
         </div>

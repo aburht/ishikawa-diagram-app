@@ -99,7 +99,7 @@ export default function InteractiveSvgFishbonePage() {
   }, [id, isAuthenticated, navigate]);
 
   const handleBoneClick = (bone: Bone, path: string, isExpandClick: boolean = false) => {
-    // Handle expansion clicks (for +number indicators)
+    // Handle expansion clicks (for +number indicators) - allow for everyone
     if (isExpandClick) {
       setExpandedBones(prev => {
         const newSet = new Set(prev);
@@ -113,7 +113,7 @@ export default function InteractiveSvgFishbonePage() {
       return;
     }
 
-    // Handle regular bone clicks (for editing)
+    // Handle regular bone clicks (for editing) - only for owners in edit mode
     if (!editMode || !isOwner) {
       // Show message if user tries to edit but isn't the owner
       if (!isOwner) {
@@ -738,8 +738,8 @@ export default function InteractiveSvgFishbonePage() {
                     onBoneClick={handleBoneClick}
                     selectedBone={selectedBone}
                     expandedBones={expandedBones}
-                    width={1200}
-                    height={600}
+                    width={1800}
+                    height={1200}
                     theme="light"
                   />
                 </div>

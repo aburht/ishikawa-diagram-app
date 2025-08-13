@@ -8,7 +8,7 @@ import { CreateDiagramDto, UpdateDiagramDto, PaginationDto, PaginatedResponse } 
 @Injectable()
 export class DiagramsService {
   private readonly logger = new Logger(DiagramsService.name);
-  private dbPath = join(__dirname, '../../db.json');
+  private dbPath = join(__dirname, '../db.json');
   private db: { diagrams: Diagram[] } = { diagrams: [] };
 
   constructor() {
