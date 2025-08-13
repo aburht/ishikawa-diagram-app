@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": "d0b9a135-fd23-43c5-be0f-676ff2d99f3b",
+      "email": "admin@kla.com",
+      "password": "$2b$10$WTcEDVk5qW0LudNsJeGe7ukl4ni62hcGplKWEJs3R387FuPH26IiS",
+      "name": "KLA Administrator",
+      "createdAt": "2025-08-13T13:43:52.077Z",
+      "updatedAt": "2025-08-13T13:43:52.077Z"
+    },
+    {
+      "id": "bc4d8695-a7ba-47ec-ae4b-93f6b41b40db",
+      "email": "demo@kla.com",
+      "password": "$2b$10$RJPcUo1tOk7euniRP1p3XOZPOG8jw51uvQdbUagnR4Ffc9u7Au/oi",
+      "name": "Demo User",
+      "createdAt": "2025-08-13T13:43:52.205Z",
+      "updatedAt": "2025-08-13T13:43:52.205Z"
+    },
+    {
+      "id": "21095127-02af-44e0-824e-a76a7eaa0d4e",
+      "email": "sam@gmail.com",
+      "password": "$2b$10$TLJHIfZJcgN4HPzewmJrqunx8MCQGKXkK5TdMYpIPgE7Jh4OSjEcS",
+      "name": "weqweqw",
+      "createdAt": "2025-08-13T14:01:51.121Z",
+      "updatedAt": "2025-08-13T14:01:51.121Z"
+    }
+  ]
+}

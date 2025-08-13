@@ -1,0 +1,417 @@
+{
+  "diagrams": [
+    {
+      "id": "455e1e3a-765b-42b4-8bee-89b3d1667941",
+      "name": "Project Delay Analysis",
+      "creator": "sam@gmail.com",
+      "effectLabel": "Missed Deadline",
+      "effectInfo": "Project failed to meet expected completion date",
+      "roots": [
+        {
+          "label": "People",
+          "info": "Human resource related factors",
+          "children": [
+            {
+              "label": "Micro-managing boss",
+              "info": "Excessive oversight reducing team efficiency",
+              "metadata": "Set boundaries",
+              "children": [
+                {
+                  "label": "Daily check-ins",
+                  "info": "Too frequent status meetings"
+                },
+                {
+                  "label": "Approval delays",
+                  "info": "Bottlenecks in decision making"
+                }
+              ]
+            },
+            {
+              "label": "Absent secretary",
+              "info": "Key administrative support unavailable",
+              "children": [
+                {
+                  "label": "Scheduling conflicts",
+                  "info": "Meeting coordination issues"
+                },
+                {
+                  "label": "Document delays",
+                  "info": "Important paperwork processing delayed"
+                }
+              ]
+            },
+            {
+              "label": "Sick children",
+              "info": "Team members with family responsibilities",
+              "children": [
+                {
+                  "label": "Unexpected absences",
+                  "info": "Last-minute schedule changes"
+                },
+                {
+                  "label": "Reduced focus",
+                  "info": "Distraction from personal concerns"
+                }
+              ]
+            },
+            {
+              "label": "Lack of communication from client",
+              "info": "Insufficient feedback and requirements clarity",
+              "children": [
+                {
+                  "label": "Unclear requirements",
+                  "info": "Specifications keep changing"
+                },
+                {
+                  "label": "Late responses",
+                  "info": "Client feedback delays project progress"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Method",
+          "info": "Process and methodology issues",
+          "children": [
+            {
+              "label": "Bureaucratic",
+              "info": "Excessive red tape and procedures",
+              "children": [
+                {
+                  "label": "Multiple approvals",
+                  "info": "Too many sign-offs required"
+                },
+                {
+                  "label": "Rigid processes",
+                  "info": "Inflexible workflow procedures"
+                }
+              ]
+            },
+            {
+              "label": "Poor prioritization",
+              "info": "Incorrect task ordering and resource allocation",
+              "children": [
+                {
+                  "label": "Wrong focus",
+                  "info": "Time spent on non-critical tasks"
+                },
+                {
+                  "label": "Resource conflicts",
+                  "info": "Competing demands for same resources"
+                }
+              ]
+            },
+            {
+              "label": "Unforeseen variables",
+              "info": "Unexpected factors affecting timeline",
+              "children": [
+                {
+                  "label": "Scope creep",
+                  "info": "Additional requirements discovered"
+                },
+                {
+                  "label": "External dependencies",
+                  "info": "Third-party delays"
+                }
+              ]
+            },
+            {
+              "label": "Lack of planning",
+              "info": "Insufficient project preparation",
+              "children": [
+                {
+                  "label": "No buffer time",
+                  "info": "Overly optimistic scheduling"
+                },
+                {
+                  "label": "Missing contingencies",
+                  "info": "No backup plans for risks"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Measurement",
+          "info": "Tracking and monitoring deficiencies",
+          "children": [
+            {
+              "label": "Did not track progress",
+              "info": "No systematic monitoring of milestones",
+              "children": [
+                {
+                  "label": "No dashboards",
+                  "info": "Lack of visual progress indicators"
+                },
+                {
+                  "label": "Irregular reviews",
+                  "info": "Infrequent status assessments"
+                }
+              ]
+            },
+            {
+              "label": "No short term goals",
+              "info": "Missing intermediate checkpoints",
+              "children": [
+                {
+                  "label": "Long milestones",
+                  "info": "Too much time between checkpoints"
+                },
+                {
+                  "label": "Vague objectives",
+                  "info": "Unclear success criteria"
+                }
+              ]
+            },
+            {
+              "label": "Lack of accountability",
+              "info": "No clear ownership of deliverables",
+              "children": [
+                {
+                  "label": "Unclear roles",
+                  "info": "Responsibilities not well defined"
+                },
+                {
+                  "label": "No consequences",
+                  "info": "Missing accountability measures"
+                }
+              ]
+            },
+            {
+              "label": "No timesheet",
+              "info": "Time tracking not implemented",
+              "children": [
+                {
+                  "label": "Effort estimation errors",
+                  "info": "Poor understanding of actual time spent"
+                },
+                {
+                  "label": "Resource planning issues",
+                  "info": "Inability to optimize team allocation"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Machine",
+          "info": "Equipment and infrastructure problems",
+          "children": [
+            {
+              "label": "Coffee machine broken",
+              "info": "Team morale and productivity impact",
+              "children": [
+                {
+                  "label": "Reduced energy",
+                  "info": "Lower alertness during work hours"
+                },
+                {
+                  "label": "Time lost",
+                  "info": "Team members leaving office for coffee"
+                }
+              ]
+            },
+            {
+              "label": "Car wouldn't start",
+              "info": "Transportation issues affecting attendance",
+              "children": [
+                {
+                  "label": "Late arrivals",
+                  "info": "Delayed start times"
+                },
+                {
+                  "label": "Missed meetings",
+                  "info": "Important discussions postponed"
+                }
+              ]
+            },
+            {
+              "label": "Poor internet connection",
+              "info": "Connectivity issues hampering work",
+              "children": [
+                {
+                  "label": "Slow file transfers",
+                  "info": "Delayed document sharing"
+                },
+                {
+                  "label": "Video call problems",
+                  "info": "Communication difficulties"
+                }
+              ]
+            },
+            {
+              "label": "Slow computer",
+              "info": "Hardware performance bottlenecks",
+              "children": [
+                {
+                  "label": "Application crashes",
+                  "info": "Lost work and rework required"
+                },
+                {
+                  "label": "Compile time delays",
+                  "info": "Development process slowdowns"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Environment",
+          "info": "Workplace and external conditions",
+          "children": [
+            {
+              "label": "Fluorescent lights",
+              "info": "Poor lighting affecting concentration",
+              "children": [
+                {
+                  "label": "Eye strain",
+                  "info": "Reduced productivity due to discomfort"
+                },
+                {
+                  "label": "Frequent breaks needed",
+                  "info": "Interruptions to work flow"
+                }
+              ]
+            },
+            {
+              "label": "Small cubicle",
+              "info": "Cramped workspace limiting efficiency",
+              "children": [
+                {
+                  "label": "Lack of privacy",
+                  "info": "Difficulty concentrating on complex tasks"
+                },
+                {
+                  "label": "Storage issues",
+                  "info": "Disorganized workspace"
+                }
+              ]
+            },
+            {
+              "label": "Office too cold",
+              "info": "Uncomfortable temperature affecting performance",
+              "children": [
+                {
+                  "label": "Distraction",
+                  "info": "Focus on comfort rather than work"
+                },
+                {
+                  "label": "Health issues",
+                  "info": "Increased sick days"
+                }
+              ]
+            },
+            {
+              "label": "Noisy coworkers",
+              "info": "Disruptive workplace environment",
+              "children": [
+                {
+                  "label": "Concentration problems",
+                  "info": "Difficulty focusing on detailed work"
+                },
+                {
+                  "label": "Stress increase",
+                  "info": "Mental fatigue from constant disruptions"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Materials",
+          "info": "Resources and supply related issues",
+          "children": [
+            {
+              "label": "Unstable desk",
+              "info": "Physical workspace problems",
+              "children": [
+                {
+                  "label": "Equipment damage risk",
+                  "info": "Potential for computer/monitor damage"
+                },
+                {
+                  "label": "Work interruptions",
+                  "info": "Constant readjustment needed"
+                }
+              ]
+            },
+            {
+              "label": "No printer paper",
+              "info": "Essential supplies unavailable",
+              "children": [
+                {
+                  "label": "Document review delays",
+                  "info": "Cannot print drafts for review"
+                },
+                {
+                  "label": "Client presentation issues",
+                  "info": "Unable to provide hard copies"
+                }
+              ]
+            },
+            {
+              "label": "Out of pens",
+              "info": "Basic writing materials shortage",
+              "children": [
+                {
+                  "label": "Note-taking problems",
+                  "info": "Inability to record important information"
+                },
+                {
+                  "label": "Signature delays",
+                  "info": "Document approval bottlenecks"
+                }
+              ]
+            },
+            {
+              "label": "Squeaky desk chair",
+              "info": "Distracting workplace equipment",
+              "children": [
+                {
+                  "label": "Noise distraction",
+                  "info": "Disrupts concentration and meetings"
+                },
+                {
+                  "label": "Embarrassment factor",
+                  "info": "Reluctance to move during important calls"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sample-2",
+      "name": "Sample Fishbone",
+      "creator": "sam@gmail.com",
+      "effectLabel": "Effect",
+      "effectInfo": "Sample effect description",
+      "roots": [
+        {
+          "label": "People",
+          "info": "Human factors",
+          "children": [
+            {
+              "label": "New Cause",
+              "info": "Cause description",
+              "children": []
+            }
+          ]
+        },
+        {
+          "label": "Process",
+          "info": "Process factors",
+          "children": [
+            {
+              "label": "New Cause",
+              "info": "Cause description",
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

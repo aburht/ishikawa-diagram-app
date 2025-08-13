@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/*
+.react-flow__node-custom {
+  @apply bg-white border border-gray-300 rounded-lg shadow-md p-3 text-center w-48 !important transition-all duration-200;
+} */
+
+/* Highlighted style for selected nodes */
+.react-flow__node-custom.selected {
+  @apply border-blue-500 shadow-lg ring-2 ring-blue-200 !important;
+}
+
+/* Style for edges */
+.react-flow__edge-path {
+  @apply stroke-gray-600 stroke-2 !important;
+}
+
+/* Sidebar styling with higher specificity */
+.sidebar {
+  @apply fixed right-6 top-6 w-72 bg-white/90 backdrop-blur-sm p-4 rounded-xl shadow-xl border border-gray-200 z-10 !important;
+}
+
+/* Consistent styling for inputs, selects, and buttons */
+.sidebar input,
+.sidebar select,
+.sidebar button {
+  @apply w-full p-2 mb-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 !important;
+}
+
+/* Button-specific hover and active states */
+.sidebar button {
+  @apply bg-blue-500 text-white hover:bg-blue-600 active:bg-blue-700 transition !important;
+}
+
+/* Background gradient for the main application */
+body {
+  @apply bg-gradient-to-br from-blue-50 to-gray-100 min-h-screen !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  /* .sidebar {
+    @apply w-full right-0 top-0 rounded-none !important;
+  }
+
+  .react-flow__node-custom {
+    @apply w-40 !important;
+  } */
+}
