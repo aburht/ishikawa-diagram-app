@@ -2,6 +2,10 @@
 
 A full-stack application for creating and managing Ishikawa (Fishbone) diagrams, built with React, TypeScript, NestJS, and Tailwind CSS.
 
+## 🎬 Demo Video
+
+[Watch the demo here](https://screenrec.com/share/nZltMHXrsG)
+
 ##  Features
 
 - **Interactive Fishbone Diagrams**: Create and edit professional Ishikawa diagrams
